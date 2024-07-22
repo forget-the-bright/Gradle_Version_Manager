@@ -31,16 +31,27 @@ func Init() {
 var Collector_Release_Checksums string = "https://gradle.org/release-checksums"
 var Collector_Archive_Url string = "https://gradle.org/releases/"
 
+// https://mirror.ghproxy.com/https://github.com/gradle/gradle-distributions/releases/download/v8.9.0/gradle-8.9-bin.zip
+// "https://services.gradle.org/distributions/gradle-8.9-bin.zip"
+// "https://services.gradle.org/distributions/gradle-8.9-bin.zip.sha256"
+// https://downloads.gradle.org/distributions/gradle-8.9-bin.zip
+// https://downloads.gradle.org/distributions/gradle-8.9-bin.zip.sha256
 func build_GradleItem(version, version_time, sha256 string) *GradleItem {
-	return &GradleItem{
+
+	var item = &GradleItem{
 		Version:     version,
 		ReleaseTime: version_time,
 		FileName:    "gradle-" + version + "-bin.zip",
 		FileType:    "zip",
 		Sha256:      sha256,
-		Sha256Url:   "https://downloads.gradle-dn.com/distributions/gradle-" + version + "-bin.zip.sha256",
-		DownloadUrl: "https://downloads.gradle-dn.com/distributions/gradle-" + version + "-bin.zip",
+		//Sha256Url:   "https://downloads.gradle-dn.com/distributions/gradle-" + version + "-bin.zip.sha256",
+		// DownloadUrl: "https://downloads.gradle-dn.com/distributions/gradle-" + version + "-bin.zip",
+		//Sha256Url:   "https://services.gradle.org/distributions/gradle-" + version + "-bin.zip.sha256",
+		//DownloadUrl: "https://services.gradle.org/distributions/gradle-" + version + "-bin.zip",
+		Sha256Url:   "https://downloads.gradle.org/distributions/gradle-" + version + "-bin.zip.sha256",
+		DownloadUrl: "https://downloads.gradle.org/distributions/gradle-" + version + "-bin.zip",
 	}
+	return item
 }
 
 func getFileNameByDownLoadUrl(url string) string {

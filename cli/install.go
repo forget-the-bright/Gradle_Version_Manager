@@ -28,6 +28,8 @@ func fundVersion(version string) *collector.GradleItem {
 
 func downloadAndInstall(version string) (err error) {
 	ui := fundVersion(version)
+	println(ui.DownloadUrl)
+	println(ui.Sha256Url)
 	if ui == nil {
 		return cli.Exit(errors.New(version+" version is not supported"), 1)
 	}
